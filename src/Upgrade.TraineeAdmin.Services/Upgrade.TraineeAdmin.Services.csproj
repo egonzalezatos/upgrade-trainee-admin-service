@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Upgrade.Sdk.Domain" Version="1.0.0-CI-20220420-155218" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Upgrade.TraineeAdmin.Domain\Upgrade.TraineeAdmin.Domain.csproj" />
+    <ProjectReference Include="..\Upgrade.TraineeAdmin.DTO\Upgrade.TraineeAdmin.DTO.csproj" />
+    <ProjectReference Include="..\Upgrade.TraineeAdmin.Services.Abstractions\Upgrade.TraineeAdmin.Services.Abstractions.csproj" />
+    <ProjectReference Include="..\Upgrade.TraineeAdmin.Shared\Upgrade.TraineeAdmin.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

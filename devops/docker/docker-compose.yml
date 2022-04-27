@@ -1,0 +1,27 @@
+services:
+  trainee-admin:
+    image: egonzalezatos/upgrade.trainee-admin
+    container_name: "trainee-admin-container"
+    ports:
+      - 80:80
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      DB_SERVER: trainee-admin-db
+      DB_PORT: 1433
+      DB_USERNAME: sa
+      DB_PASSWORD: Admin123
+      GRPC_PORT: 666
+      
+  trainee-admin-db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: "trainee-admin-db-container"
+    ports:
+      - 1433:1433
+    volumes:
+      - traine-admin-db-pv:/var/opt/mssql
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: Admin123
+        
+volumes: 
+  traine-admin-db-pv:

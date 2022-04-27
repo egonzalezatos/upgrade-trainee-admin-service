@@ -1,0 +1,9 @@
+.idea/
+.sonarqube/
+
+**/out
+**/release
+
+**/obj
+**/bin
+*.DotSettings.user
