@@ -1,12 +1,14 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using Upgrade.TraineeAdmin.DTO.DTOs;
 using Upgrade.TraineeAdmin.Services.Abstractions.Services;
 
 namespace Upgrade.TraineeAdmin.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] 
+    [SwaggerTag("Admin - Profile")]
     public class ProfileController : ControllerBase
     {
         private readonly IProfileService _profileService;

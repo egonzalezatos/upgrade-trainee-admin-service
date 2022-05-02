@@ -12,6 +12,7 @@ namespace Upgrade.TraineeAdmin.Infrastructure.Extensions
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+
             services.AddEFCore<EntityContext>(options =>
             {
                 if (configuration.IsInMemory())

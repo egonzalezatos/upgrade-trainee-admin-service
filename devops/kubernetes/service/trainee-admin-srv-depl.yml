@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: trainee-admin-srv-depl
+  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trainee-admin-srv
+  template:
+    metadata:
+      labels:
+        app: trainee-admin-srv
+    spec:
+      containers:
+        - name: trainee-admin-container
+          image: egonzalezatos/upgrade.trainee-admin
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+            - containerPort: 666
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Production
+            - name: PERSISTENCE_MODE
+              value: Relational
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: trainee-admin-db-secret
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: trainee-admin-db-secret
+            - name: DB_SERVER
+              value: trainee-admin-db-ip
+            - name: DB_PORT
+              value: "1433"
+            - name: GRPC_PORT
+              value: "666"
+
+---
+#Cluster IP
+apiVersion: v1
+kind: Service
+metadata:
+  name: trainee-admin-srv-ip
+spec:
+  type: ClusterIP
+  selector:
+    app: trainee-admin-srv
+  ports:
+    - name: trainee-admin-srv
+      port: 6001
+      targetPort: 80
+      protocol: TCP
+    - name: trainee-admin-grpc 
+      port: 666
+      
+--- 
+#Node Port
+apiVersion: v1
+kind: Service
+metadata:
+  name: trainee-admin-srv-nodeport
+spec:
+  type: NodePort
+  selector:
+    app: trainee-admin-srv
+  ports:
+    - name: trainee-admin-srv
+      port: 6001
+      targetPort: 80
+    - name: trainee-admin-grpc
+      port: 666
+      nodePort: 30666
+
+    

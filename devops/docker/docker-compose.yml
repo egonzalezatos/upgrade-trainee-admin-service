@@ -6,6 +6,7 @@ services:
       - 80:80
     environment:
       ASPNETCORE_ENVIRONMENT: Production
+      PERSISTENCE_MODE: Relational
       DB_SERVER: trainee-admin-db
       DB_PORT: 1433
       DB_USERNAME: sa

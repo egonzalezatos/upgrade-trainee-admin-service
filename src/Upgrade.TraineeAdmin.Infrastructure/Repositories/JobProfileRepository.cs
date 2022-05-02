@@ -21,7 +21,7 @@ namespace Upgrade.TraineeAdmin.Infrastructure.Repositories
             var query = DbSet.Where(entity => entity.Position.Id == positionId)
                 .Where(entity => entity.Level.Id == levelId)
                 .Where(entity => entity.Technology.Id == technologyId);
-            return await query.FirstAsync();
+            return await query.FirstOrDefaultAsync();
         }
 
         public override async Task<List<JobProfile>> FindAll(CancellationToken cancellationToken = default)

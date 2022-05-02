@@ -27,15 +27,11 @@ namespace Upgrade.TraineeAdmin
         {
             //Replace ConnectionStrings from appsettings using Environment Variables 
             services.ReadConfigurationEnvironments(Configuration);
-            
+
             services
                 .AddApi()
                 .AddInfrastructure(Configuration)
-                .AddDependencies()
-                .AddApiSwagger();
-            
-            
-            
+                .AddDependencies();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,22 +44,8 @@ namespace Upgrade.TraineeAdmin
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseDeveloperExceptionPage();
-
-            app.UseApiSwagger();
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
+            app.UseApi();
             app.UseGrpcEndpoints();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
         }
     }
 }

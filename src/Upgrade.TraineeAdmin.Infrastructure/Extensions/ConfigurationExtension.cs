@@ -6,7 +6,7 @@ namespace Upgrade.TraineeAdmin.Infrastructure.Extensions
 {
     public static class ConfigurationExtension
     {
-        public static readonly string AppSetting = "PersistenceMode";
+        public static readonly string AppSetting = "PERSISTENCE_MODE";
 
         public static string GetPersistenceMode(this IConfiguration configuration)
         {

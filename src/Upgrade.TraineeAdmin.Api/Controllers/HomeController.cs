@@ -1,10 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Upgrade.TraineeAdmin.Api.Controllers
 {
     [ApiController]
     [Route("/")]
+    [SwaggerTag("Admin")]
     public class HomeController : ControllerBase
     {
         

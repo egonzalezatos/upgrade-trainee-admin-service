@@ -1,11 +1,13 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using Upgrade.TraineeAdmin.Services.Abstractions.Services;
 
 namespace Upgrade.TraineeAdmin.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [SwaggerTag("Admin - Position")]
     public class PositionController : ControllerBase
     {
         private readonly IPositionService _positionService;
