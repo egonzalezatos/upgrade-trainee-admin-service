@@ -4,6 +4,7 @@ using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Upgrade.TraineeAdmin.Security.Extensions;
 
 namespace Upgrade.TraineeAdmin.Api.Extensions
 {
@@ -12,18 +13,18 @@ namespace Upgrade.TraineeAdmin.Api.Extensions
         public static IServiceCollection AddApi(this IServiceCollection services)
         {
             services.AddControllers();
-            services.AddCors();
             services.AddApiSwagger();
             return services;
         }
 
         public static IApplicationBuilder UseApi(this IApplicationBuilder app)
         {
-            app.UseCors();
+            app.UseCors("mypolicy");
             app.UseDeveloperExceptionPage();
             app.UseApiSwagger();
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

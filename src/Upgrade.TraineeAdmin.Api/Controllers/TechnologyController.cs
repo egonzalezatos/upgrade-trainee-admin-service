@@ -23,10 +23,5 @@ namespace Upgrade.TraineeAdmin.Api.Controllers
             return Ok(await _technologyService.GetAll());
         }
         
-        [HttpGet("user/{userId}/position/{positionId}")]
-        public async Task<IActionResult> GetByUserIdPositionId(int userId, int positionId)
-        {
-            return Ok(await _technologyService.GetByUserIdPositionId(userId, positionId));
-        }
     }
 }

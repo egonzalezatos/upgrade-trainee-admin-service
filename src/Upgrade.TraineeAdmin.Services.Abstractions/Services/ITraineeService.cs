@@ -4,8 +4,8 @@ using Upgrade.TraineeAdmin.DTO.DTOs;
 
 namespace Upgrade.TraineeAdmin.Services.Abstractions.Services
 {
-    public interface ILevelService : IService
+    public interface ITraineeService : IService
     {
-        public Task<List<Level>> GetAll();
+        Task<List<Trainee>> GetAll();
     }
 }

@@ -9,6 +9,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\crossc-cutting\Upgrade.TraineeAdmin.Exceptions\Upgrade.TraineeAdmin.Exceptions.csproj" />
     <ProjectReference Include="..\Upgrade.TraineeAdmin.Domain\Upgrade.TraineeAdmin.Domain.csproj" />
     <ProjectReference Include="..\Upgrade.TraineeAdmin.DTO\Upgrade.TraineeAdmin.DTO.csproj" />
     <ProjectReference Include="..\Upgrade.TraineeAdmin.Services.Abstractions\Upgrade.TraineeAdmin.Services.Abstractions.csproj" />

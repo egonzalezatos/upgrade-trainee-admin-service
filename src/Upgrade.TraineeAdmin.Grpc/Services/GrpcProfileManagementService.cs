@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using gRPC;
 using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 using Upgrade.TraineeAdmin.Services.Abstractions.Services;
 using Profile = gRPC.Profile;
 using DTOs = Upgrade.TraineeAdmin.DTO.DTOs;
@@ -19,6 +20,7 @@ namespace Upgrade.TraineeAdmin.Grpc.Services
             _profileService = profileService;
         }
 
+        // [Authorize]
         public override async Task<ProfilesResponse> GetProfilesByUsersIds(GetProfilesByUsersIdsRequest request, ServerCallContext context)
         {
             ProfilesResponse response = new ProfilesResponse();
@@ -30,6 +32,7 @@ namespace Upgrade.TraineeAdmin.Grpc.Services
             return response;
         }
 
+        [Authorize]
         public override async Task<GetProfileByFlattenPlanResponse> GetProfileByFlattenPlan(GetProfileByFlattenPlanRequest request, ServerCallContext context)
         {
             GetProfileByFlattenPlanResponse response = new GetProfileByFlattenPlanResponse();

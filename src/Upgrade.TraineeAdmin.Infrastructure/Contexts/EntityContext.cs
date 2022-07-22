@@ -10,6 +10,7 @@ namespace Upgrade.TraineeAdmin.Infrastructure.Contexts
         private DbSet<Position> Positions { get; set; }
         private DbSet<Level> Levels { get; set; }
         private DbSet<Technology> Technologies { get; set; }
+        private DbSet<Trainee> Trainees { get; set; }
 
         //For User Profiles Management
         private DbSet<UserProfile> UserProfiles { get; set; }
@@ -31,6 +32,8 @@ namespace Upgrade.TraineeAdmin.Infrastructure.Contexts
             TechnologySeeder.Seed(builder);
             JobProfileSeeder.Seed(builder);
             UserProfileSeeder.Seed(builder);
+            // JobProfileTraineeSeed.Seed(builder);
+            TraineeSeeder.Seed(builder);
         }
     }
 }

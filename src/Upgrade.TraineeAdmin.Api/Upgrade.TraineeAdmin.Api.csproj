@@ -7,6 +7,7 @@
   
   
   <ItemGroup>
+    <ProjectReference Include="..\crossc-cutting\Upgrade.TraineeAdmin.Security\Upgrade.TraineeAdmin.Security.csproj" />
     <ProjectReference Include="..\Upgrade.TraineeAdmin.Services.Abstractions\Upgrade.TraineeAdmin.Services.Abstractions.csproj" />
   </ItemGroup>
   

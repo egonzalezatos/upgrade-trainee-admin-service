@@ -1,4 +1,5 @@
-﻿using Upgrade.TraineeAdmin.Domain.Models;
+﻿using System;
+using Upgrade.TraineeAdmin.Domain.Models;
 using DTOs = Upgrade.TraineeAdmin.DTO.DTOs;
 using Profile = AutoMapper.Profile;
 
@@ -8,7 +9,7 @@ namespace Upgrade.TraineeAdmin.Services.MapProfiles
     {
         public PositionProfile()
         {
-            CreateMap<Position, DTOs.Position>();
+            CreateMap<Position, DTOs.Position>().ReverseMap();
         }
     }
 }

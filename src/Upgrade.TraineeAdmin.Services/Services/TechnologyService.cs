@@ -27,11 +27,5 @@ namespace Upgrade.TraineeAdmin.Services.Services
             return _technologyMapper.ToDto<DTOs.Technology>(levels);
         }
 
-        public async Task<List<DTOs.Technology>> GetByUserIdPositionId(int userId, int positionId)
-        {
-            List<UserProfile> profiles = await _userProfileRepository.FindByUserIdAndPositionId(userId, positionId);
-            List<Technology> technologies = profiles.Select(profile => profile.JobProfile.Technology).ToList();
-            return _technologyMapper.ToDto<DTOs.Technology>(technologies);
-        }
     }
 }

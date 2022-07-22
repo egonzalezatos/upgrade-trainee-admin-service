@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Upgrade.TraineeAdmin.Domain.Models;
 
 namespace Upgrade.TraineeAdmin.Infrastructure.Seeds
@@ -7,10 +8,7 @@ namespace Upgrade.TraineeAdmin.Infrastructure.Seeds
     {
         private static object[] data =
         {
-            new {Id = 1, UserId = 1, JobProfileId = 1},
-            new {Id = 2, UserId = 1, JobProfileId = 2},
-            new {Id = 3, UserId = 1, JobProfileId = 3},
-            new {Id = 4, UserId = 1, JobProfileId = 4},
+            new {Email = "1@gmail.com", DasId = "1", AddressId = 1, Active = true, CreatedOn = DateTime.Now, CreatedBy = 1, UpdatedOn = DateTime.Now, UpdatedBy = 1, Id = 1, UserId = 1},
         };
 
         public static void Seed(ModelBuilder builder)

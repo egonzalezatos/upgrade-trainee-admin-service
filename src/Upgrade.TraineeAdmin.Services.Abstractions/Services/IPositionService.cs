@@ -7,7 +7,6 @@ namespace Upgrade.TraineeAdmin.Services.Abstractions.Services
     public interface IPositionService : IService
     {
         public Task<List<Position>> GetAll();
-        public Task<List<Position>> GetByUserId(int userId);
     }
     
 }

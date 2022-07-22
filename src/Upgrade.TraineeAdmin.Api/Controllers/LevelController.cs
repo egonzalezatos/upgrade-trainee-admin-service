@@ -28,16 +28,5 @@ namespace Upgrade.TraineeAdmin.Api.Controllers
             return Ok(await _levelService.GetAll());
         }
         
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="userId"> Este</param>
-        /// <param name="positionId"></param>
-        /// <returns></returns>
-        [HttpGet("user/{userId}/position/{positionId}")]
-        public async Task<IActionResult> Get(int userId, int positionId)
-        {
-            return Ok(await _levelService.GetByUserIdPositionId(userId, positionId));
-        }
     }
 }

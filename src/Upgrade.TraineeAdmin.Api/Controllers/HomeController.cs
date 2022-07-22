@@ -1,5 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Upgrade.TraineeAdmin.Api.Controllers
@@ -19,5 +22,26 @@ namespace Upgrade.TraineeAdmin.Api.Controllers
         {
             return Ok(await Task.Run(() => "Hello mister"));
         } 
+        
+        [HttpGet("check-auth")]
+        [Log]
+        [Authorize]
+        public async Task<IActionResult> HelloAuth()
+        {
+            return Ok(await Task.Run(() => "Secret message"));
+        } 
+    }
+
+    public class LogAttribute : ActionFilterAttribute
+    {
+        public override Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        {
+            foreach (var keyValuePair in context.HttpContext.Request.Headers)
+            {
+                Console.WriteLine($"{keyValuePair.Key}: {keyValuePair.Value}");
+            }
+
+            return base.OnActionExecutionAsync(context, next);
+        }
     }
 }

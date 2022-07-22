@@ -7,6 +7,7 @@ using Upgrade.TraineeAdmin.Api.Extensions;
 using Upgrade.TraineeAdmin.Grpc.Extensions;
 using Upgrade.TraineeAdmin.Infrastructure.Extensions;
 using Upgrade.TraineeAdmin.IoC.Extensions;
+using Upgrade.TraineeAdmin.Security.Extensions;
 
 namespace Upgrade.TraineeAdmin
 {
@@ -31,6 +32,7 @@ namespace Upgrade.TraineeAdmin
             services
                 .AddApi()
                 .AddInfrastructure(Configuration)
+                .AddSecurity(Configuration)
                 .AddDependencies();
         }
 

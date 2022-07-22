@@ -3,12 +3,11 @@ using Sdk.Domain.Models;
 
 namespace Upgrade.TraineeAdmin.Domain.Models
 {
-    public class UserProfile : Entity<int>
+    public class UserProfile : LogicEntity<int, int>
     {
-        [Required]
         public int UserId { get; set; }
-        
-        [Required]
-        public JobProfile JobProfile { get; set; }
+        public int AddressId { get; set; }
+        public string Email { get; set; }
+        public string DasId { get; set; }
     }
 }

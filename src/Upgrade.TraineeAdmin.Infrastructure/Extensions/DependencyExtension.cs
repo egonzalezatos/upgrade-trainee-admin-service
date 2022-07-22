@@ -26,10 +26,8 @@ namespace Upgrade.TraineeAdmin.Infrastructure.Extensions
         
         public static IApplicationBuilder SeedData(this IApplicationBuilder app)
         {
-            using (var scope = app.ApplicationServices.CreateScope())
-            {
-                scope.ServiceProvider.GetService<DbContext>().MigrateDb();
-            }
+            using var scope = app.ApplicationServices.CreateScope();
+            scope.ServiceProvider.GetService<DbContext>().MigrateDb();
             return app;
         }
     }

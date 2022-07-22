@@ -26,12 +26,6 @@ namespace Upgrade.TraineeAdmin.Services.Services
             List<Level> levels = await _levelRepository.FindAll();
             return _levelMapper.ToDto<DTOs.Level>(levels);
         }
-
-        public async Task<List<DTOs.Level>> GetByUserIdPositionId(int userId, int positionId)
-        {
-            List<UserProfile> profiles = await _userProfileRepository.FindByUserIdAndPositionId(userId, positionId);
-            List<Level> levels = profiles.Select(profile => profile.JobProfile.Level).ToList();
-            return _levelMapper.ToDto<DTOs.Level>(levels);
-        }
+        
     }
 }
