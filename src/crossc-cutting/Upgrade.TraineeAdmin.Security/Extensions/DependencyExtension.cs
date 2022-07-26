@@ -9,8 +9,9 @@ namespace Upgrade.TraineeAdmin.Security.Extensions
     {
         public static IServiceCollection AddSecurity(this IServiceCollection services, IConfiguration configuration)
         {
+            var origins = configuration["CORS"].Split(";");
             services.AddCors(
-                options => options.AddPolicy("mypolicy", builder => builder.WithOrigins("http://localhost:8081")));
+                options => options.AddPolicy("mypolicy", builder => builder.WithOrigins(origins)));
             
             Console.WriteLine($"Identity Server Address: {configuration["IAM_Address"]}");
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -25,6 +26,7 @@ namespace Upgrade.TraineeAdmin.Security.Extensions
                     // IdentityServer emits a typ header by default, recommended extra check
                     options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
                 });
+            services.AddAuthorization();
             return services;
         }
     }

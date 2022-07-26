@@ -10,6 +10,7 @@ using Profile = gRPC.Profile;
 using DTOs = Upgrade.TraineeAdmin.DTO.DTOs;
 namespace Upgrade.TraineeAdmin.Grpc.Services
 {
+    
     public class GrpcProfileManagementService : GrpcProfileManagement.GrpcProfileManagementBase
     {
         private readonly IMapper _mapper;
@@ -20,7 +21,7 @@ namespace Upgrade.TraineeAdmin.Grpc.Services
             _profileService = profileService;
         }
 
-        // [Authorize]
+        [Authorize]
         public override async Task<ProfilesResponse> GetProfilesByUsersIds(GetProfilesByUsersIdsRequest request, ServerCallContext context)
         {
             ProfilesResponse response = new ProfilesResponse();

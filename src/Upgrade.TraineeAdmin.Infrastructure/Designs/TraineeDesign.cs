@@ -15,12 +15,13 @@ namespace Upgrade.TraineeAdmin.Infrastructure.Designs
             
             builder.HasIndex("UserProfileId").IsUnique();
 
-            // builder
-            //     .HasMany(p => p.JobProfiles)
-            //     .WithMany(p => p.Trainees)
-            //     .UsingEntity<JobProfileTrainee>(
-            //         right => right.HasOne<JobProfile>().WithMany().HasForeignKey("JobProfileId"),
-            //         pivot =>  pivot.HasOne<Trainee>().WithMany().HasForeignKey("TraineeId"));
+            builder
+                .HasMany(p => p.JobProfiles)
+                .WithMany(p => p.Trainees)
+                .UsingEntity<JobProfileTrainee>(
+                    right => right.HasOne(r=>r.JobProfile).WithMany(),
+                    left =>  left.HasOne(l=>l.Trainee).WithMany(),
+                    pivot => pivot.HasKey(p => p.Id));
 
             builder.Property(trainee => trainee.OnBoardingDate)
                 .IsRowVersion();

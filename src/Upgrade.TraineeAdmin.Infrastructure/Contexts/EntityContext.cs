@@ -32,7 +32,7 @@ namespace Upgrade.TraineeAdmin.Infrastructure.Contexts
             TechnologySeeder.Seed(builder);
             JobProfileSeeder.Seed(builder);
             UserProfileSeeder.Seed(builder);
-            // JobProfileTraineeSeed.Seed(builder);
+            JobProfileTraineeSeed.Seed(builder);
             TraineeSeeder.Seed(builder);
         }
     }

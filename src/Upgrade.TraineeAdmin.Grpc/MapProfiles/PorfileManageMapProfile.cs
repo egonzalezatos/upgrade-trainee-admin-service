@@ -11,10 +11,12 @@ namespace Upgrade.TraineeAdmin.Grpc.MapProfiles
             CreateMap<string?, string>().ConvertUsing<NullStringConverter>();
 
             //DTOs -> gRPC
-            CreateMap<DTOs.Profile, gRPC.Profile>();
-            CreateMap<DTOs.Technology, gRPC.Technology>();
-            CreateMap<DTOs.Position, gRPC.JobPosition>();
-            CreateMap<DTOs.Level, gRPC.Level>();
+            CreateMap<DTOs.Profile, gRPC.Profile>()
+                .ForMember(source => source.JobPosition, cfg => cfg.MapFrom(dest => dest.Position))
+                .ReverseMap();
+            CreateMap<DTOs.Technology, gRPC.Technology>().ReverseMap();
+            CreateMap<DTOs.Position, gRPC.JobPosition>().ReverseMap();
+            CreateMap<DTOs.Level, gRPC.Level>().ReverseMap();
         }
     }
 

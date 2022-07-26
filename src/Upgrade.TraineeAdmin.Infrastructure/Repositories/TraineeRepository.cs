@@ -26,7 +26,9 @@ namespace Upgrade.TraineeAdmin.Infrastructure.Repositories
         public async Task<List<Trainee>> FindByUserIds(params int[] userIds)
         {
             return await DbSet
-                .Include(trainee => trainee.JobProfiles)
+                .Include(trainee => trainee.JobProfiles).ThenInclude(trainee => trainee.Level)
+                .Include(trainee => trainee.JobProfiles).ThenInclude(trainee => trainee.Position)
+                .Include(trainee => trainee.JobProfiles).ThenInclude(trainee => trainee.Technology)
                 .Where(trainee => userIds.Contains(trainee.UserProfile.UserId))
                 .ToListAsync();
         }

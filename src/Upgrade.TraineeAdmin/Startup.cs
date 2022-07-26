@@ -41,11 +41,19 @@ namespace Upgrade.TraineeAdmin
         {
             //Seed Data
             app.SeedData();
-            
+
+            app.UseDeveloperExceptionPage();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("mypolicy");
+            // app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.UseApi();
             app.UseGrpcEndpoints();
         }

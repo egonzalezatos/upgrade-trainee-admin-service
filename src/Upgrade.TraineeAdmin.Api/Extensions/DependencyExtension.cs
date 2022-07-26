@@ -19,13 +19,7 @@ namespace Upgrade.TraineeAdmin.Api.Extensions
 
         public static IApplicationBuilder UseApi(this IApplicationBuilder app)
         {
-            app.UseCors("mypolicy");
-            app.UseDeveloperExceptionPage();
             app.UseApiSwagger();
-            // app.UseHttpsRedirection();
-            app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
